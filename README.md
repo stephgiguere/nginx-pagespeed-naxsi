@@ -18,4 +18,4 @@ Each Auto-Installer is designed to be ran as the `root` user from the CLI. Simpl
 
 ## Found an Issue? Have a Suggestion?
 
-- [https://github.com/twogtech/installers/issues](https://github.com/twogtech/installers/issues)
+- [https://github.com/twogtech/nginx-pagespeed-naxsi/issues](https://github.com/twogtech/nginx-pagespeed-naxsi/issues)
