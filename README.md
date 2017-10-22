@@ -1,6 +1,6 @@
-# ServerAdmin Installers
+# twogtech Installers
 
-ServerAdmin Installers consists of a collection of simple, easy-to-use auto-installer bash scripts designed to simplify common and complex tasks.
+Twogtech Installers consists of a collection of simple, easy-to-use auto-installer bash scripts designed to simplify common and complex tasks. Original installers from ServerAdmin.
 
 ## Current OS Support
 
@@ -18,4 +18,4 @@ Each Auto-Installer is designed to be ran as the `root` user from the CLI. Simpl
 
 ## Found an Issue? Have a Suggestion?
 
-- [https://github.com/serveradminsh/installers/issues](https://github.com/serveradminsh/installers/issues)
+- [https://github.com/twogtech/installers/issues](https://github.com/twogtech/installers/issues)
