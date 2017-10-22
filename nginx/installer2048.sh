@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #+----------------------------------------------------------------------------+
-#+ ServerAdmin NGINX (Mainline) Auto-Installer for Ubuntu
+#+ twogtech NGINX (Mainline) Auto-Installer for Ubuntu
 #+----------------------------------------------------------------------------+
 #+ Author:      Jonathan Tittle (updated by twog.tech)
-#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle
+#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle and twogtech
 #+ GitHub:      https://github.com/twogtech/nginx-pagespeed-naxsi
 #+ Issues:      https://github.com/twogtech/nginx-pagespeed-naxsi/issues
 #+ License:     GPL v3.0
@@ -42,7 +42,7 @@ clear
 #+----------------------------------------------------------------------------+
 if [ "${EUID}" != 0 ];
 then
-    echo "ServerAdmin NGINX Auto-Installer should be executed as the root user."
+    echo "twogtech NGINX Auto-Installer should be executed as the root user."
     exit
 fi
 
