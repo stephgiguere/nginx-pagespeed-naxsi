@@ -1,9 +1,13 @@
-# ServerAdmin Installers - NGINX
+# twogtech Installers - NGINX
 
 The NGINX Auto-Installer compiles the latest Mainline version of NGINX from source and builds it against the latest versions of OpenSSL, PCRE, and ZLIB. There are currently zero configuration options, though the `installer.sh` file located in `./installers/nginx` is documented and can be modified to suite individual needs. A `systemd` service script is also included.
 
-A total of three modules are currently compiled in with the current build script:
+A total of seven modules are currently compiled in with the current build script:
 
+- [https://github.com/nbs-system/naxsi.git](https://github.com/nbs-system/naxsi.git)
+- [https://github.com/pagespeed/ngx_pagespeed](https://github.com/pagespeed/ngx_pagespeed)
+- [https://github.com/vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts)
+- [https://github.com/openresty/headers-more-nginx-module](https://github.com/openresty/headers-more-nginx-module)
 - [https://github.com/simpl/ngx_devel_kit](https://github.com/simpl/ngx_devel_kit)
 - [https://github.com/vozlt/nginx-module-vts](https://github.com/vozlt/nginx-module-vts)
 - [https://github.com/google/ngx_brotli](https://github.com/google/ngx_brotli)
