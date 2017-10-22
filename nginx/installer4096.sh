@@ -3,7 +3,7 @@
 #+ ServerAdmin NGINX (Mainline) Auto-Installer for Ubuntu
 #+----------------------------------------------------------------------------+
 #+ Author:      Jonathan Tittle
-#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle
+#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle (updated by Stephane Giguere)
 #+ GitHub:      https://github.com/serveradminsh/serveradmin-installers
 #+ Issues:      https://github.com/serveradminsh/serveradmin-installers/issues
 #+ License:     GPL v3.0
