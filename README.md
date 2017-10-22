@@ -1,6 +1,6 @@
 # twogtech Installers
 
-Twogtech Installers consists of a collection of simple, easy-to-use auto-installer bash scripts designed to simplify common and complex tasks. Original installers from ServerAdmin.
+Twogtech Installers consists of a collection of simple, easy-to-use auto-installer bash scripts designed to simplify common and complex tasks. Original installers from https://github.com/serveradminsh.
 
 ## Current OS Support
 
