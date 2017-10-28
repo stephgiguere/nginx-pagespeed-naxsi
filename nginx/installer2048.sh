@@ -54,7 +54,7 @@ currentPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dhparamBits="2048"
 nginxUser="nginx"
 openSslVers="1.0.2k"
-pagespeedVers="1.12.34.3"
+pagespeedVers="1.12.34.2"
 pcreVers="8.40"
 zlibVers="1.2.11"
 
