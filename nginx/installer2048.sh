@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 #+----------------------------------------------------------------------------+
-#+ twogtech NGINX (Mainline) Auto-Installer for Ubuntu
+#+ ServerAdmin NGINX (Mainline) Auto-Installer for Ubuntu
 #+----------------------------------------------------------------------------+
-#+ Author:      Jonathan Tittle (updated by twog.tech)
-#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle and twogtech
-#+ GitHub:      https://github.com/twogtech/nginx-pagespeed-naxsi
-#+ Issues:      https://github.com/twogtech/nginx-pagespeed-naxsi/issues
+#+ Author:      Jonathan Tittle
+#+ Copyright:   2017 ServerAdmin.sh and Jonathan Tittle
+#+ GitHub:      https://github.com/serveradminsh/serveradmin-installers
+#+ Issues:      https://github.com/serveradminsh/serveradmin-installers/issues
 #+ License:     GPL v3.0
 #+ OS:          Ubuntu 16.04, Ubuntu 16.10
 #+ Release:     1.0.0
@@ -42,7 +42,7 @@ clear
 #+----------------------------------------------------------------------------+
 if [ "${EUID}" != 0 ];
 then
-    echo "twogtech NGINX Auto-Installer should be executed as the root user."
+    echo "ServerAdmin NGINX Auto-Installer should be executed as the root user."
     exit
 fi
 
@@ -54,7 +54,7 @@ currentPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dhparamBits="2048"
 nginxUser="nginx"
 openSslVers="1.0.2k"
-pagespeedVers="1.12.34.3"
+pagespeedVers="1.12.34.2"
 pcreVers="8.40"
 zlibVers="1.2.11"
 
@@ -124,9 +124,9 @@ nginxSetup()
     #+ https://modpagespeed.com/doc/build_ngx_pagespeed_from_source
     #+------------------------------------------------------------------------+
     cd /usr/local/src/github \
-    && wget https://github.com/pagespeed/ngx_pagespeed/archive/v${pagespeedVers}-stable.zip \
-    && unzip v${pagespeedVers}-stable.zip \
-    && cd ngx_pagespeed-${pagespeedVers}-stable \
+    && wget https://github.com/pagespeed/ngx_pagespeed/archive/v${pagespeedVers}-beta.zip \
+    && unzip v${pagespeedVers}-beta.zip \
+    && cd ngx_pagespeed-${pagespeedVers}-beta \
     && export psol_url=https://dl.google.com/dl/page-speed/psol/${pagespeedVers}.tar.gz \
     && [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL) \
     && wget ${psol_url} \
