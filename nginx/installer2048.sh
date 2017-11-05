@@ -53,9 +53,9 @@ cpuCount=$(nproc --all)
 currentPath="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 dhparamBits="2048"
 nginxUser="nginx"
-openSslVers="1.0.2k"
+openSslVers="1.0.2l"
 pagespeedVers="1.12.34.2"
-pcreVers="8.40"
+pcreVers="8.41"
 zlibVers="1.2.11"
 
 #+----------------------------------------------------------------------------+
@@ -89,12 +89,13 @@ nginxSetup()
     #+------------------------------------------------------------------------+
     #+ Create directories used to build NGINX, as well as NGINX's core.
     #+------------------------------------------------------------------------+
-    mkdir -p /home/nginx/htdocs/public \
+    mkdir -p /var/www/public \
     && mkdir -p /usr/local/src/{github,packages/{openssl,pcre,zlib}} \
     && mkdir -p /etc/nginx/cache/{client,fastcgi,proxy,uwsgi,scgi} \
     && mkdir -p /etc/nginx/config/{php,proxy,sites,ssl} \
     && mkdir -p /etc/nginx/{lock,logs/{domains,server/{access,error}}} \
-    && mkdir -p /etc/nginx/{modules,pid,sites,ssl}
+    && mkdir -p /etc/nginx/{modules,pid,sites,ssl} \
+    && mkdir -p /var/cache/ngx_pagespeed
 
     #+------------------------------------------------------------------------+
     #+ Clone required repositories from GitHub
@@ -109,7 +110,7 @@ nginxSetup()
     #+ 8). NAXSI (Module)
     #+------------------------------------------------------------------------+
     cd /usr/local/src/github \
-    && git clone https://github.com/nginx/nginx.git \
+    && git clone -b 'release-1.13.3' https://github.com/nginx/nginx.git \
     && git clone https://github.com/simpl/ngx_devel_kit.git \
     && git clone https://github.com/openresty/headers-more-nginx-module.git \
     && git clone https://github.com/vozlt/nginx-module-vts.git \
@@ -124,9 +125,9 @@ nginxSetup()
     #+ https://modpagespeed.com/doc/build_ngx_pagespeed_from_source
     #+------------------------------------------------------------------------+
     cd /usr/local/src/github \
-    && wget https://github.com/pagespeed/ngx_pagespeed/archive/v${pagespeedVers}-beta.zip \
-    && unzip v${pagespeedVers}-beta.zip \
-    && cd ngx_pagespeed-${pagespeedVers}-beta \
+    && wget https://github.com/pagespeed/ngx_pagespeed/archive/v${pagespeedVers}-stable.zip \
+    && unzip v${pagespeedVers}-stable.zip \
+    && cd ngx_pagespeed-${pagespeedVers}-stable \
     && export psol_url=https://dl.google.com/dl/page-speed/psol/${pagespeedVers}.tar.gz \
     && [ -e scripts/format_binary_url.sh ] && psol_url=$(scripts/format_binary_url.sh PSOL_BINARY_URL) \
     && wget ${psol_url} \
@@ -229,7 +230,7 @@ nginxCompile()
                         --add-module=/usr/local/src/github/ngx_brotli \
                         --add-module=/usr/local/src/github/headers-more-nginx-module \
                         --add-module=/usr/local/src/github/set-misc-nginx-module \
-                        --add-module=/usr/local/src/github/ngx_pagespeed-${pagespeedVers}-beta \
+                        --add-module=/usr/local/src/github/ngx_pagespeed-${pagespeedVers}-stable \
     && make -j ${cpuCount} \
     && make install
 }
@@ -255,14 +256,14 @@ nginxConfigure()
     #+------------------------------------------------------------------------+
     #+ Copy new configuration
     #+------------------------------------------------------------------------+
-    cp -R ${currentPath}/html/index.html /home/nginx/htdocs/public/index.html \
+    cp -R ${currentPath}/html/index.html /var/www/public/index.html \
     && cp -R ${currentPath}/nginx/* /etc/nginx \
     && cp -R ${currentPath}/systemd/nginx.service /lib/systemd/system/nginx.service
 
     #+------------------------------------------------------------------------+
     #+ Set correct permissions and ownership
     #+------------------------------------------------------------------------+
-    chown -R nginx:nginx /home/nginx
+    chown -R nginx:nginx /var/www
 
     #+------------------------------------------------------------------------+
     #+ Create systemd service script and start NGINX
